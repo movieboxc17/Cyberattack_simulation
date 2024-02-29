@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cyberattack Simulation</title>
+  <style>
+    /* Add some basic styling */
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .simulation-item {
+      margin-bottom: 40px;
+      background-color: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: box-shadow 0.3s ease-in-out;
+    }
+    .simulation-item:hover {
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    }
+    h1 {
+      color: #333;
+    }
+    h2 {
+      color: #007bff;
+    }
+    .impact {
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #555;
+    }
+    .button {
+      padding: 10px 20px;
+      font-size: 18px;
+      cursor: pointer;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      transition: background-color 0.3s ease-in-out;
+    }
+    .button:hover {
+      background-color: #0056b3;
+    }
+    .meter {
+      height: 20px;
+      background-color: #ddd;
+      border-radius: 10px;
+      margin-bottom: 20px;
+      overflow: hidden;
+    }
+    .bar {
+      height: 100%;
+      width: 100%;
+      background-color: #4CAF50;
+      text-align: center;
+      line-height: 20px;
+      color: white;
+      transition: width 0.5s ease-in-out;
+    }
+    .copyright {
+      margin-top: 50px;
+      color: #888;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Cyberattack Simulation</h1>
+    <div class="simulation-item">
+      <h2>School</h2>
+      <div class="impact" id="schoolImpact">
+        <!-- Impact will be displayed here -->
+      </div>
+      <div class="meter">
+        <div class="bar" id="schoolBar" style="width: 0%;">Consciousness: 0%</div>
+      </div>
+      <div class="meter">
+        <div class="bar" id="schoolMoneyBar" style="width: 0%;">About $0 in losses</div>
+      </div>
+      <button class="button" onclick="simulateSchoolAttack()">Simulate Attack on School</button>
+    </div>
+    <div class="simulation-item">
+      <h2>Shop</h2>
+      <div class="impact" id="shopImpact">
+        <!-- Impact will be displayed here -->
+      </div>
+      <div class="meter">
+        <div class="bar" id="shopBar" style="width: 0%;">Consciousness: 0%</div>
+      </div>
+      <div class="meter">
+        <div class="bar" id="shopMoneyBar" style="width: 0%;">About $0 in losses</div>
+      </div>
+      <button class="button" onclick="simulateShopAttack()">Simulate Attack on Shop</button>
+    </div>
+    <div class="simulation-item">
+      <h2>Restaurant</h2>
+      <div class="impact" id="restaurantImpact">
+        <!-- Impact will be displayed here -->
+      </div>
+      <div class="meter">
+        <div class="bar" id="restaurantBar" style="width: 0%;">Consciousness: 0%</div>
+      </div>
+      <div class="meter">
+        <div class="bar" id="restaurantMoneyBar" style="width: 0%;">About $0 in losses</div>
+      </div>
+      <button class="button" onclick="simulateRestaurantAttack()">Simulate Attack on Restaurant</button>
+    </div>
+    <div class="simulation-item">
+      <h2>Bank</h2>
+      <div class="impact" id="bankImpact">
+        <!-- Impact will be displayed here -->
+      </div>
+      <div class="meter">
+        <div class="bar" id="bankBar" style="width: 0%;">Consciousness: 0%</div>
+      </div>
+      <div class="meter">
+        <div class="bar" id="bankMoneyBar" style="width: 0%;">About $0 in losses</div>
+      </div>
+      <button class="button" onclick="simulateBankAttack()">Simulate Attack on Bank</button>
+    </div>
+    <div class="simulation-item">
+      <h2>Critical Infrastructure</h2>
+      <div class="impact" id="infrastructureImpact">
+        <!-- Impact will be displayed here -->
+      </div>
+      <div class="meter">
+        <div class="bar" id="infrastructureBar" style="width: 0%;">Consciousness: 0%</div>
+      </div>
+      <div class="meter">
+        <div class="bar" id="infrastructureMoneyBar" style="width: 0%;">About $0 in losses</div>
+      </div>
+      <button class="button" onclick="simulateInfrastructureAttack()">Simulate Attack on Infrastructure</button>
+    </div>
+    <div class="simulation-item">
+      <h2>Response</h2>
+      <div class="impact">
+        <p>The affected organizations initiate emergency protocols and notify authorities.</p>
+        <p>Security measures are implemented to prevent further damage.</p>
+      </div>
+    </div>
+    <div class="copyright">
+      <p>Copyright Teknik AB All rights reserved.</p>
+      <p>Created by Movybox c17</p>
+    </div>
+  </div>
+
+  <script>
+    // Function to simulate attack on school
+    function simulateSchoolAttack() {
+      var impactElement = document.getElementById('schoolImpact');
+      impactElement.innerHTML = '<p>Cyberattack disables the school\'s computer systems.</p>' +
+                                '<p>Consequence: Students and teachers cannot access educational resources.</p>';
+      // Update consciousness meter
+      updateConsciousness('schoolBar', 50);
+      // Update money loss meter
+      updateMoneyLoss('schoolMoneyBar', 5000, 10000); // Placeholder value for money loss and max loss
+    }
+
+    // Function to simulate attack on shop
+    function simulateShopAttack() {
+      var impactElement = document.getElementById('shopImpact');
+      impactElement.innerHTML = '<p>Cyberattack compromises the shop\'s payment processing system.</p>' +
+                                '<p>Consequence: Customers cannot make purchases, leading to financial losses.</p>';
+      // Update consciousness meter
+      updateConsciousness('shopBar', 70);
+      // Update money loss meter
+      updateMoneyLoss('shopMoneyBar', 3000, 10000); // Placeholder value for money loss and max loss
+    }
+
+    // Function to simulate attack on restaurant
+    function simulateRestaurantAttack() {
+      var impactElement = document.getElementById('restaurantImpact');
+      impactElement.innerHTML = '<p>Cyberattack disrupts the restaurant\'s reservation and ordering system.</p>' +
+                                '<p>Consequence: Customers experience delays and dissatisfaction.</p>';
+      // Update consciousness meter
+      updateConsciousness('restaurantBar', 60);
+      // Update money loss meter
+      updateMoneyLoss('restaurantMoneyBar', 2000, 10000); // Placeholder value for money loss and max loss
+    }
+
+    // Function to simulate attack on bank
+    function simulateBankAttack() {
+      var impactElement = document.getElementById('bankImpact');
+      impactElement.innerHTML = '<p>Cyberattack compromises the bank\'s transactional systems.</p>' +
+                                '<p>Consequence: Customers cannot access their accounts or conduct transactions.</p>';
+      // Update consciousness meter
+      updateConsciousness('bankBar', 90);
+      // Update money loss meter
+      updateMoneyLoss('bankMoneyBar', 10000, 10000); // Placeholder value for money loss and max loss
+    }
+
+    // Function to simulate attack on critical infrastructure
+    function simulateInfrastructureAttack() {
+      var impactElement = document.getElementById('infrastructureImpact');
+      impactElement.innerHTML = '<p>Cyberattack targets critical infrastructure, causing widespread disruption.</p>' +
+                                '<p>Consequence: Power outages, transportation disruptions, and other critical failures occur.</p>';
+      // Update consciousness meter
+      updateConsciousness('infrastructureBar', 100);
+      // Update money loss meter
+      updateMoneyLoss('infrastructureMoneyBar', 50000, 50000); // Placeholder value for money loss and max loss
+    }
+
+    // Function to update consciousness meter
+    function updateConsciousness(barId, percent) {
+      var bar = document.getElementById(barId);
+      var width = 0;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= percent) {
+          clearInterval(id);
+        } else {
+          width++;
+          bar.style.width = width + '%';
+          bar.innerHTML = 'Consciousness: ' + width + '%';
+        }
+      }
+    }
+
+    // Function to update money loss meter
+    function updateMoneyLoss(barId, money, maxMoney) {
+      var bar = document.getElementById(barId);
+      var width = 0;
+      var id = setInterval(frame, 10);
+      function frame() {
+        if (width >= money || width >= maxMoney) {
+          clearInterval(id);
+        } else {
+          width += 100;
+          if (width > maxMoney) {
+            width = maxMoney;
+          }
+          bar.style.width = (width / maxMoney) * 100 + '%';
+          bar.innerHTML = 'About $' + width + ' in losses';
+        }
+      }
+    }
+  </script>
+</body>
+</html>
